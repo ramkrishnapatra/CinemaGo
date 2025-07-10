@@ -24,7 +24,7 @@ const [loading, setLoading]=useState(true);
 
 const dashboardCards=[
   {title:"Total Bookings", value:dashboardData.totalBookings  || "0" ,icon:ChartLineIcon},
-  {title:"Total Revenue", value:currency+ dashboardData.totalRevenue  || "0" ,icon:CircleDollarSignIcon},
+  {title:"Total Revenue", value: (currency + dashboardData.totalRevenue) || (currency + "0"), icon:CircleDollarSignIcon},
   {title:"Active Shows", value:dashboardData.activeShows.length  || "0" ,icon:PlayCircleIcon},
   {title:"Total Users", value:dashboardData.totalUser  || "0" ,icon:UserIcon}
 ]
@@ -39,7 +39,8 @@ const fetchDashboardData=async()=>{
     toast.error(data.message)
   }
  } catch (error) {
-    toast.error("Error fetching dashboard Data",error)
+    console.error("Error fetching dashboard Data", error);
+toast.error("Error fetching dashboard data");
  }
 }
 useEffect(()=>{

@@ -9,9 +9,10 @@ const Layout = () => {
 
 const {isAdmin,fetchIsAdmin}=useAppContext()
 
-useEffect(()=>{
-  fetchIsAdmin()
-},[])
+useEffect(() => {
+  fetchIsAdmin();
+}, [fetchIsAdmin]);
+
 
   return isAdmin ? (
     <>
