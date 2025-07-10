@@ -25,7 +25,7 @@ export const AppProvider=({children})=>{
 
     const fetchIsAdmin=async()=>{
         try {
-           const [data]=await axios.get('/api/admin/is-admin',{headers:{Authorization:`Bearer ${await getToken()}`}}) 
+           const {data}=await axios.get('/api/admin/is-admin',{headers:{Authorization:`Bearer ${await getToken()}`}}) 
            setIsAdmin(data.isAdmin)
            if(!data.isAdmin && location.pathname.startsWith('/admin')){
               navigate('/')
