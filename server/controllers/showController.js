@@ -47,7 +47,7 @@ export const addShow=async(req,res)=>{
         poster_path:movieApiData.poster_path,
         backdrop_path:movieApiData.backdrop_path,
         genres:movieApiData.genres,
-        casts:movieCreditsData.casts,
+        casts:movieCreditsData.cast,
         release_date:movieApiData.release_date,
         original_language:movieApiData.original_language,
         tagline:movieApiData.tagline || "",
@@ -123,8 +123,8 @@ export const getShow=async(req,res)=>{
          dateTime[date]=[]
       }
       dateTime[date].push({time:show.showDateTime,showId:show._id})
-      res.json({success:true,movie,dateTime})
-     })
+   })
+   res.json({success:true,movie,dateTime})
    } catch (error) {
       console.error(error);
       res.json({success:false ,message:error.message})

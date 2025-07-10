@@ -34,7 +34,7 @@ export const getDashboardData=async(req,res)=>{
 
 //api to get all shows
 
-export const getAllShows=async(re,res)=>{
+export const getAllShows=async(req,res)=>{
     try {
       const shows=await Show.find({showDateTime:{$gte: new Date()}}).populate('movie').sort({showDateTime:1}) 
        res.json({success:true,shows}) 
