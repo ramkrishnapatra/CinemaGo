@@ -22,8 +22,12 @@ app.use('/api/stripe', express.raw({ type: 'application/json' }), stripeWebHooks
 
 // middleware
 app.use(express.json())
-app.use(cors())
+// app.use(cors())
 app.use(clerkMiddleware())
+app.use(cors({
+  origin: ['http://localhost:5173'],
+  credentials: true,
+}))
 
 
 // API routes
