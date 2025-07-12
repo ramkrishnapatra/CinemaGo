@@ -7,11 +7,13 @@ import Loading from '../../components/Loading'
 
 const Layout = () => {
 
-const {isAdmin,fetchIsAdmin}=useAppContext()
+const {isAdmin,fetchIsAdmin,user}=useAppContext()
 
-useEffect(() => {
-  fetchIsAdmin();
-}, []);
+  useEffect(() => {
+    if (user) {
+      fetchIsAdmin()
+    }
+  }, [user])
 
 
   return isAdmin ? (
