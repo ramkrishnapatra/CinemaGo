@@ -19,10 +19,15 @@ await connectDB()
 // stripe webhook route 
 app.use('/api/stripe', express.raw({ type: 'application/json' }), stripeWebHooks);
 
-
+const corsOptions={
+    origin: ["https://cinemago-client.vercel.app", "http://localhost:5173"]
+,
+    methods:["GET","POST","PUT","DELETE"],
+    allowedHeaders:["Content-Type","Authorization"]
+}
 // middleware
 app.use(express.json())
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(clerkMiddleware())
 
 
