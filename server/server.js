@@ -16,7 +16,15 @@ const port=3000;
 
 await connectDB()
 
-app.use(cors())
+const allowedOrigins = [
+  'https://cinemago-client-fty96p75t-ramkrishna-patras-projects.vercel.app',
+  'http://localhost:5173',
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+}));
 // stripe webhook route 
 app.use('/api/stripe', express.raw({ type: 'application/json' }), stripeWebHooks);
 
@@ -33,6 +41,8 @@ app.use('/api/show',showRouter)
 app.use('/api/booking',bookingRouter)
 app.use('/api/admin',adminRouter)
 app.use('/api/user',userRouter)
+
+app.options('*', cors());
 
 
 app.listen(port,()=>console.log(`server listening at http://localhost:${port}`))
